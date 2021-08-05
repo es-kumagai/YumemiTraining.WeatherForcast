@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1DDC31926BBCD24008ECE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC31826BBCD24008ECE39 /* AppDelegate.swift */; };
+		B1DDC31B26BBCD24008ECE39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC31A26BBCD24008ECE39 /* SceneDelegate.swift */; };
+		B1DDC31D26BBCD24008ECE39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC31C26BBCD24008ECE39 /* ViewController.swift */; };
+		B1DDC32026BBCD24008ECE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1DDC31E26BBCD24008ECE39 /* Main.storyboard */; };
+		B1DDC32226BBCD25008ECE39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1DDC32126BBCD25008ECE39 /* Assets.xcassets */; };
+		B1DDC32526BBCD25008ECE39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1DDC32326BBCD25008ECE39 /* LaunchScreen.storyboard */; };
+		B1DDC33026BBCD26008ECE39 /* YumemiTraining_WeatherForcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC32F26BBCD26008ECE39 /* YumemiTraining_WeatherForcastTests.swift */; };
+		B1DDC33B26BBCD26008ECE39 /* YumemiTraining_WeatherForcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC33A26BBCD26008ECE39 /* YumemiTraining_WeatherForcastUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1DDC32C26BBCD26008ECE39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1DDC30D26BBCD24008ECE39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1DDC31426BBCD24008ECE39;
+			remoteInfo = YumemiTraining.WeatherForcast;
+		};
+		B1DDC33726BBCD26008ECE39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1DDC30D26BBCD24008ECE39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1DDC31426BBCD24008ECE39;
+			remoteInfo = YumemiTraining.WeatherForcast;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B1DDC31526BBCD24008ECE39 /* YumemiTraining.WeatherForcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.WeatherForcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1DDC31826BBCD24008ECE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1DDC31A26BBCD24008ECE39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B1DDC31C26BBCD24008ECE39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B1DDC31F26BBCD24008ECE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1DDC32126BBCD25008ECE39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1DDC32426BBCD25008ECE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1DDC32626BBCD25008ECE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1DDC32B26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumemiTraining.WeatherForcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1DDC32F26BBCD26008ECE39 /* YumemiTraining_WeatherForcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTraining_WeatherForcastTests.swift; sourceTree = "<group>"; };
+		B1DDC33126BBCD26008ECE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1DDC33626BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumemiTraining.WeatherForcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1DDC33A26BBCD26008ECE39 /* YumemiTraining_WeatherForcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiTraining_WeatherForcastUITests.swift; sourceTree = "<group>"; };
+		B1DDC33C26BBCD26008ECE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1DDC31226BBCD24008ECE39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1DDC32826BBCD26008ECE39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1DDC33326BBCD26008ECE39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1DDC30C26BBCD24008ECE39 = {
+			isa = PBXGroup;
+			children = (
+				B1DDC31726BBCD24008ECE39 /* YumemiTraining.WeatherForcast */,
+				B1DDC32E26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests */,
+				B1DDC33926BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests */,
+				B1DDC31626BBCD24008ECE39 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1DDC31626BBCD24008ECE39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1DDC31526BBCD24008ECE39 /* YumemiTraining.WeatherForcast.app */,
+				B1DDC32B26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests.xctest */,
+				B1DDC33626BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1DDC31726BBCD24008ECE39 /* YumemiTraining.WeatherForcast */ = {
+			isa = PBXGroup;
+			children = (
+				B1DDC31826BBCD24008ECE39 /* AppDelegate.swift */,
+				B1DDC31A26BBCD24008ECE39 /* SceneDelegate.swift */,
+				B1DDC31C26BBCD24008ECE39 /* ViewController.swift */,
+				B1DDC31E26BBCD24008ECE39 /* Main.storyboard */,
+				B1DDC32126BBCD25008ECE39 /* Assets.xcassets */,
+				B1DDC32326BBCD25008ECE39 /* LaunchScreen.storyboard */,
+				B1DDC32626BBCD25008ECE39 /* Info.plist */,
+			);
+			path = YumemiTraining.WeatherForcast;
+			sourceTree = "<group>";
+		};
+		B1DDC32E26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1DDC32F26BBCD26008ECE39 /* YumemiTraining_WeatherForcastTests.swift */,
+				B1DDC33126BBCD26008ECE39 /* Info.plist */,
+			);
+			path = YumemiTraining.WeatherForcastTests;
+			sourceTree = "<group>";
+		};
+		B1DDC33926BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1DDC33A26BBCD26008ECE39 /* YumemiTraining_WeatherForcastUITests.swift */,
+				B1DDC33C26BBCD26008ECE39 /* Info.plist */,
+			);
+			path = YumemiTraining.WeatherForcastUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1DDC31426BBCD24008ECE39 /* YumemiTraining.WeatherForcast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1DDC33F26BBCD26008ECE39 /* Build configuration list for PBXNativeTarget "YumemiTraining.WeatherForcast" */;
+			buildPhases = (
+				B1DDC31126BBCD24008ECE39 /* Sources */,
+				B1DDC31226BBCD24008ECE39 /* Frameworks */,
+				B1DDC31326BBCD24008ECE39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YumemiTraining.WeatherForcast;
+			productName = YumemiTraining.WeatherForcast;
+			productReference = B1DDC31526BBCD24008ECE39 /* YumemiTraining.WeatherForcast.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1DDC32A26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1DDC34226BBCD26008ECE39 /* Build configuration list for PBXNativeTarget "YumemiTraining.WeatherForcastTests" */;
+			buildPhases = (
+				B1DDC32726BBCD26008ECE39 /* Sources */,
+				B1DDC32826BBCD26008ECE39 /* Frameworks */,
+				B1DDC32926BBCD26008ECE39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1DDC32D26BBCD26008ECE39 /* PBXTargetDependency */,
+			);
+			name = YumemiTraining.WeatherForcastTests;
+			productName = YumemiTraining.WeatherForcastTests;
+			productReference = B1DDC32B26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1DDC33526BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1DDC34526BBCD26008ECE39 /* Build configuration list for PBXNativeTarget "YumemiTraining.WeatherForcastUITests" */;
+			buildPhases = (
+				B1DDC33226BBCD26008ECE39 /* Sources */,
+				B1DDC33326BBCD26008ECE39 /* Frameworks */,
+				B1DDC33426BBCD26008ECE39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1DDC33826BBCD26008ECE39 /* PBXTargetDependency */,
+			);
+			name = YumemiTraining.WeatherForcastUITests;
+			productName = YumemiTraining.WeatherForcastUITests;
+			productReference = B1DDC33626BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1DDC30D26BBCD24008ECE39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					B1DDC31426BBCD24008ECE39 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					B1DDC32A26BBCD26008ECE39 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = B1DDC31426BBCD24008ECE39;
+					};
+					B1DDC33526BBCD26008ECE39 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = B1DDC31426BBCD24008ECE39;
+					};
+				};
+			};
+			buildConfigurationList = B1DDC31026BBCD24008ECE39 /* Build configuration list for PBXProject "YumemiTraining.WeatherForcast" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1DDC30C26BBCD24008ECE39;
+			productRefGroup = B1DDC31626BBCD24008ECE39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1DDC31426BBCD24008ECE39 /* YumemiTraining.WeatherForcast */,
+				B1DDC32A26BBCD26008ECE39 /* YumemiTraining.WeatherForcastTests */,
+				B1DDC33526BBCD26008ECE39 /* YumemiTraining.WeatherForcastUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1DDC31326BBCD24008ECE39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1DDC32526BBCD25008ECE39 /* LaunchScreen.storyboard in Resources */,
+				B1DDC32226BBCD25008ECE39 /* Assets.xcassets in Resources */,
+				B1DDC32026BBCD24008ECE39 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1DDC32926BBCD26008ECE39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1DDC33426BBCD26008ECE39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1DDC31126BBCD24008ECE39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1DDC31D26BBCD24008ECE39 /* ViewController.swift in Sources */,
+				B1DDC31926BBCD24008ECE39 /* AppDelegate.swift in Sources */,
+				B1DDC31B26BBCD24008ECE39 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1DDC32726BBCD26008ECE39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1DDC33026BBCD26008ECE39 /* YumemiTraining_WeatherForcastTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1DDC33226BBCD26008ECE39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1DDC33B26BBCD26008ECE39 /* YumemiTraining_WeatherForcastUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1DDC32D26BBCD26008ECE39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1DDC31426BBCD24008ECE39 /* YumemiTraining.WeatherForcast */;
+			targetProxy = B1DDC32C26BBCD26008ECE39 /* PBXContainerItemProxy */;
+		};
+		B1DDC33826BBCD26008ECE39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1DDC31426BBCD24008ECE39 /* YumemiTraining.WeatherForcast */;
+			targetProxy = B1DDC33726BBCD26008ECE39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B1DDC31E26BBCD24008ECE39 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1DDC31F26BBCD24008ECE39 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1DDC32326BBCD25008ECE39 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1DDC32426BBCD25008ECE39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1DDC33D26BBCD26008ECE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B1DDC33E26BBCD26008ECE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1DDC34026BBCD26008ECE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89282N6UM7;
+				INFOPLIST_FILE = YumemiTraining.WeatherForcast/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.ez-net.YumemiTraining-WeatherForcast";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1DDC34126BBCD26008ECE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89282N6UM7;
+				INFOPLIST_FILE = YumemiTraining.WeatherForcast/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.ez-net.YumemiTraining-WeatherForcast";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1DDC34326BBCD26008ECE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89282N6UM7;
+				INFOPLIST_FILE = YumemiTraining.WeatherForcastTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.ez-net.YumemiTraining-WeatherForcastTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YumemiTraining.WeatherForcast.app/YumemiTraining.WeatherForcast";
+			};
+			name = Debug;
+		};
+		B1DDC34426BBCD26008ECE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89282N6UM7;
+				INFOPLIST_FILE = YumemiTraining.WeatherForcastTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.ez-net.YumemiTraining-WeatherForcastTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YumemiTraining.WeatherForcast.app/YumemiTraining.WeatherForcast";
+			};
+			name = Release;
+		};
+		B1DDC34626BBCD26008ECE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89282N6UM7;
+				INFOPLIST_FILE = YumemiTraining.WeatherForcastUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.ez-net.YumemiTraining-WeatherForcastUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YumemiTraining.WeatherForcast;
+			};
+			name = Debug;
+		};
+		B1DDC34726BBCD26008ECE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89282N6UM7;
+				INFOPLIST_FILE = YumemiTraining.WeatherForcastUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.ez-net.YumemiTraining-WeatherForcastUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YumemiTraining.WeatherForcast;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1DDC31026BBCD24008ECE39 /* Build configuration list for PBXProject "YumemiTraining.WeatherForcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1DDC33D26BBCD26008ECE39 /* Debug */,
+				B1DDC33E26BBCD26008ECE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1DDC33F26BBCD26008ECE39 /* Build configuration list for PBXNativeTarget "YumemiTraining.WeatherForcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1DDC34026BBCD26008ECE39 /* Debug */,
+				B1DDC34126BBCD26008ECE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1DDC34226BBCD26008ECE39 /* Build configuration list for PBXNativeTarget "YumemiTraining.WeatherForcastTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1DDC34326BBCD26008ECE39 /* Debug */,
+				B1DDC34426BBCD26008ECE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1DDC34526BBCD26008ECE39 /* Build configuration list for PBXNativeTarget "YumemiTraining.WeatherForcastUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1DDC34626BBCD26008ECE39 /* Debug */,
+				B1DDC34726BBCD26008ECE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1DDC30D26BBCD24008ECE39 /* Project object */;
+}
