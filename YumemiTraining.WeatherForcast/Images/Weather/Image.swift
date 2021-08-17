@@ -21,6 +21,15 @@ extension UIImage {
 
 extension Weather {
     
+    /// Returns an image painted with the tint color
+    /// that representing the weather expressed by this instance.
+    var imageWithTintColor: UIImage {
+    
+        image.withTintColor(tintColor)
+    }
+    
+    /// Returns an image that representing
+    /// the weather expressed by this instance.
     var image: UIImage {
         
         switch self {
@@ -33,6 +42,23 @@ extension Weather {
             
         case .rainy:
             return .rainy
+        }
+    }
+    
+    /// Returns a tint color that representing
+    /// the weather expressed by this instance.
+    var tintColor: UIColor {
+        
+        switch self {
+        
+        case .sunny:
+            return .red
+            
+        case .cloudy:
+            return .gray
+            
+        case .rainy:
+            return .blue
         }
     }
 }

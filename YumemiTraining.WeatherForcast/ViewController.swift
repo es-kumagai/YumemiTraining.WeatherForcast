@@ -35,6 +35,6 @@ extension ViewController {
             fatalError("Unexpected weather '\(weatherString)' was fetched.")
         }
         
-        weatherImageView.image = weather.image
+        weatherImageView.image = weather.imageWithTintColor
     }
 }
