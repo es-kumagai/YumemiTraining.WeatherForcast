@@ -37,7 +37,7 @@ extension ViewController {
     ///   - ofTitle: the text for this alert.
     ///   - actionHandler: The action that will be invoked
     ///                    when touch the 'OK' button in the alert.
-    func presentErrorAlert(message: String, ofTitle: String, actionHandler: ((_ action: UIAlertAction) -> Void)? = nil) {
+    func presentErrorAlert(message: String, ofTitle title: String, actionHandler: ((_ action: UIAlertAction) -> Void)? = nil) {
     
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: actionHandler)
