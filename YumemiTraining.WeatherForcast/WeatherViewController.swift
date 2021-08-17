@@ -8,6 +8,7 @@
 import UIKit
 import YumemiWeather
 
+@objcMembers
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var weatherImageView: UIImageView!
@@ -21,6 +22,20 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         clearTemperatureLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
     }
 
     @IBAction func reloadButtonDidPush(_ sender: Any) {
