@@ -61,12 +61,12 @@ extension ViewController {
 
             let weatherString = try YumemiWeather.fetchWeather(at: currentArea)
         
-            guard let weather = Weather(rawValue: weatherString) else {
+            guard let weatherKind = Weather.Kind(rawValue: weatherString) else {
                 
                 fatalError("Unexpected weather '\(weatherString)' was fetched.")
             }
             
-            weatherImageView.image = weather.imageWithTintColor
+            weatherImageView.image = weatherKind.imageWithTintColor
         }
         catch let error as YumemiWeatherError {
             

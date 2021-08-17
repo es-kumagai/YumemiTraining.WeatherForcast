@@ -19,7 +19,7 @@ extension UIImage {
     static let rainy = #imageLiteral(resourceName: "Rainy")
 }
 
-extension Weather {
+extension Weather.Kind {
     
     /// Returns an image painted with the tint color
     /// that representing the weather expressed by this instance.
