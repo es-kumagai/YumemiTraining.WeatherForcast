@@ -100,7 +100,6 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         let viewController = storyboard.instantiateWeatherViewController()
         
         XCTAssertNotNil(viewController)
-        XCTAssertTrue(viewController is WeatherViewController)
     }
     
     func testWeatherViewController() throws {
