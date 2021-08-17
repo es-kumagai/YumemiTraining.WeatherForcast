@@ -88,14 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B14DDF1326CB67AC00B2EAB9 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				B14DDF1A26CB685D00B2EAB9 /* Weather */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		B14DDF1A26CB685D00B2EAB9 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +123,8 @@
 		B1DDC31726BBCD24008ECE39 /* YumemiTraining.WeatherForcast */ = {
 			isa = PBXGroup;
 			children = (
-				B14DDF1326CB67AC00B2EAB9 /* Images */,
+				B1D8ECAE26CBF6460028AF32 /* Resources */,
+				B14DDF1A26CB685D00B2EAB9 /* Weather */,
 				B1DDC31826BBCD24008ECE39 /* AppDelegate.swift */,
 				B1DDC31A26BBCD24008ECE39 /* SceneDelegate.swift */,
 				B1DDC31C26BBCD24008ECE39 /* ViewController.swift */,
