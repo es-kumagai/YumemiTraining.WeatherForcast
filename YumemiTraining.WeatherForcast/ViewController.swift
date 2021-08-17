@@ -11,13 +11,16 @@ import YumemiWeather
 class ViewController: UIViewController {
 
     @IBOutlet weak var weatherImageView: UIImageView!
-    
+    @IBOutlet weak var maximumTemperatureLabel: UILabel!
+    @IBOutlet weak var minimumTemperatureLabel: UILabel!
+
     /// The area that supposing we are in.
     var currentArea = "tokyo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        clearTemperatureLabels()
     }
 
     @IBAction func reloadButtonDidPush(_ sender: Any) {
@@ -42,6 +45,13 @@ extension ViewController {
         alertController.addAction(okAction)
         
         present(alertController, animated: true)
+    }
+    
+    /// Reset the labels for temperature.
+    func clearTemperatureLabels() {
+        
+        minimumTemperatureLabel.text = "--"
+        maximumTemperatureLabel.text = "--"
     }
     
     /// Fetch current weather state and show in `weatherImageView`.
