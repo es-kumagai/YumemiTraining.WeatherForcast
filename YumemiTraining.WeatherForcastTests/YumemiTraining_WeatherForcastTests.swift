@@ -18,9 +18,13 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testWeather() throws {
+
+        let sunny = UIImage(weather: .sunny)
+        sunny.
+        XCTAssertNotNil()
+        XCTAssertNotNil(UIImage(weather: .cloudy))
+        XCTAssertNotNil(UIImage(weather: .rainy))
     }
 
     func testPerformanceExample() throws {

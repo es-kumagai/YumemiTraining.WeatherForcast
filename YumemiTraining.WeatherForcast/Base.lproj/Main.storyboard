@@ -24,6 +24,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5M-l8-jvY">
                                 <rect key="frame" x="235.5" y="642" width="47" height="30"/>
                                 <state key="normal" title="Reload"/>
+                                <connections>
+                                    <action selector="reloadButtonDidPush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9v-eu-lFJ"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-Qe-PoW">
                                 <rect key="frame" x="103.5" y="334.5" width="207" height="227.5"/>
@@ -70,6 +73,9 @@
                             <constraint firstItem="N5M-l8-jvY" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" constant="80" id="xuI-B9-Ibw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImageView" destination="dBj-dc-teg" id="Sst-oU-YmB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
