@@ -20,6 +20,10 @@ extension Weather.Request : Codable {
     
 }
 
+extension Weather.Request : Equatable {
+    
+}
+
 extension Weather.Request {
     
     var jsonString: String {

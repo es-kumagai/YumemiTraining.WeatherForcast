@@ -16,7 +16,7 @@ struct Weather {
     var date: Date
 }
 
-extension Weather : Decodable {
+extension Weather : Codable {
     
     enum CodingKeys : String, CodingKey {
         

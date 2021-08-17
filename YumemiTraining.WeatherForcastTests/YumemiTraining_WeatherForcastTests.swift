@@ -55,33 +55,41 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
     func testWeatherCodec() throws {
         
         let decoder = JSONDecoder()
+        let encoder = JSONEncoder()
+        
+        encoder.outputFormatting = .prettyPrinted
         
         let weatherData1 = """
             {
-                "weather" : "sunny",
-                "max_temp" : 20,
-                "min_temp" : -20,
-                "date" : "2020-04-01T12:00:00+09:00"
+              "max_temp" : 20,
+              "date" : "2020-04-01T12:00:00+09:00",
+              "min_temp" : -20,
+              "weather" : "sunny"
             }
             """.data(using: .utf8)!
         
         let weather1 = try decoder.decode(Weather.self, from: weatherData1)
-        
+        let encodedWeatherData1 = try encoder.encode(weather1)
         
         XCTAssertEqual(weather1.kind, .sunny)
         XCTAssertEqual(weather1.maximumTemperature, 20)
         XCTAssertEqual(weather1.minimumTemperature, -20)
         XCTAssertEqual(weather1.date.rawDate, Calendar.current.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0)))
+        
+        XCTAssertEqual(String(data: weatherData1, encoding: .utf8), String(data: encodedWeatherData1, encoding: .utf8))
     }
     
     func testWeatherRequestCodec() throws {
         
         let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
         
         let request1 = Weather.Request(area: "tokyo", date: Weather.Date(rawDate: Date(timeIntervalSince1970: 0)))
         let jsonData1 = try encoder.encode(request1)
+        let decodedRequest1 = try decoder.decode(Weather.Request.self, from: jsonData1)
         
         XCTAssertEqual(String(data: jsonData1, encoding: .utf8), #"{"date":"1970-01-01T09:00:00+09:00","area":"tokyo"}"#)
+        XCTAssertEqual(decodedRequest1, request1)
     }
     
     func testInstantiateWeatherViewController() throws {
