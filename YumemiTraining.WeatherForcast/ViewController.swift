@@ -57,31 +57,40 @@ extension ViewController {
     /// Fetch current weather state and show in `weatherImageView`.
     func reloadWeather() {
         
+        let encoder = JSONEncoder()
+
+        let request = Weather.Request(area: currentArea, date: Weather.Date())
+        let requestJson = try! String(data: encoder.encode(request), encoding: .utf8)!
+
         do {
 
-            let weatherString = try YumemiWeather.fetchWeather(at: currentArea)
-        
-            guard let weatherKind = Weather.Kind(rawValue: weatherString) else {
-                
-                fatalError("Unexpected weather '\(weatherString)' was fetched.")
-            }
+            let decoder = JSONDecoder()
             
-            weatherImageView.image = weatherKind.imageWithTintColor
+            let weatherString = try YumemiWeather.fetchWeather(requestJson)
+            let weatherData = weatherString.data(using: .utf8)!
+            let weather = try decoder.decode(Weather.self, from: weatherData)
+        
+            weatherImageView.image = weather.kind.imageWithTintColor
+            minimumTemperatureLabel.text = String(weather.minimumTemperature)
+            maximumTemperatureLabel.text = String(weather.maximumTemperature)
         }
         catch let error as YumemiWeatherError {
             
-            let title = "Failed to fetch weather"
             let message: String
             
             switch error {
             
             case .invalidParameterError:
-                message = "The parameter '\(currentArea)' was not valid."
+                message = "The parameter '\(request)' was not valid."
             case .unknownError:
-                message = "A unknown error occurred while fetching weather in \(currentArea)."
+                message = "A unknown error occurred while fetching weather with \(request)."
             }
 
-            presentErrorAlert(message: message, ofTitle: title)
+            presentErrorAlert(message: message, ofTitle: "Failed to fetch weather")
+        }
+        catch let error as DecodingError {
+            
+            fatalError("Decoding error: \(error)")
         }
         catch {
             

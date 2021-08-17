@@ -44,8 +44,8 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         let weatherData1 = """
             {
                 "weather" : "sunny",
-                "maxTemp" : 20,
-                "minTemp" : -20,
+                "max_temp" : 20,
+                "min_temp" : -20,
                 "date" : "2020-04-01T12:00:00+09:00"
             }
             """.data(using: .utf8)!
@@ -56,6 +56,16 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         XCTAssertEqual(weather1.kind, .sunny)
         XCTAssertEqual(weather1.maximumTemperature, 20)
         XCTAssertEqual(weather1.minimumTemperature, -20)
-        XCTAssertEqual(weather1.date, Calendar.current.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0)))
+        XCTAssertEqual(weather1.date.rawDate, Calendar.current.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0)))
+    }
+    
+    func testWeatherRequestCodec() throws {
+        
+        let encoder = JSONEncoder()
+        
+        let request1 = Weather.Request(area: "tokyo", date: Weather.Date(rawDate: Date(timeIntervalSince1970: 0)))
+        let jsonData1 = try encoder.encode(request1)
+        
+        XCTAssertEqual(String(data: jsonData1, encoding: .utf8), #"{"date":"1970-01-01T09:00:00+09:00","area":"tokyo"}"#)
     }
 }
