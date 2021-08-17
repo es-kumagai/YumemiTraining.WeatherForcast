@@ -15,7 +15,9 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
 
         weatherViewController = storyboard!.instantiateWeatherViewController()!
+
         weatherViewController.modalPresentationStyle = .fullScreen
+        weatherViewController.weatherModel = WeatherModelImpl()
     }
 
     override func viewDidAppear(_ animated: Bool) {

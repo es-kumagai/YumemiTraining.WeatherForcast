@@ -18,6 +18,9 @@ class WeatherViewController: UIViewController {
     /// The area that supposing we are in.
     var currentArea = "tokyo"
     
+    /// The model for fetching a weather data.
+    var weatherModel: WeatherModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,7 +83,7 @@ extension WeatherViewController {
         let request = Weather.Request(area: currentArea, date: Weather.Date())
         
         do {
-            let weather = try YumemiWeather.fetchWeather(request)
+            let weather = try weatherModel.fetchWeather(with: request)
         
             weatherImageView.image = weather.kind.imageWithTintColor
             minimumTemperatureLabel.text = String(weather.minimumTemperature)

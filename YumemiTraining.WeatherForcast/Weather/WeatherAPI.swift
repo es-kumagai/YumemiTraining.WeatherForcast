@@ -14,7 +14,7 @@ extension YumemiWeather {
     /// - Parameter request: An information to specify an area and a date.
     /// - Throws: YumemiWeatherError, DecodingError
     /// - Returns: The weather data of the point specified with `request`.
-    static func fetchWeather(_ request: Weather.Request) throws -> Weather {
+    static func fetchWeather(with request: Weather.Request) throws -> Weather {
         
         do {
 
