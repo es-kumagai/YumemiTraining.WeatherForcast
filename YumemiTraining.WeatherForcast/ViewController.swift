@@ -56,19 +56,11 @@ extension ViewController {
     
     /// Fetch current weather state and show in `weatherImageView`.
     func reloadWeather() {
-        
-        let encoder = JSONEncoder()
 
         let request = Weather.Request(area: currentArea, date: Weather.Date())
-        let requestJson = try! String(data: encoder.encode(request), encoding: .utf8)!
-
+        
         do {
-
-            let decoder = JSONDecoder()
-            
-            let weatherString = try YumemiWeather.fetchWeather(requestJson)
-            let weatherData = weatherString.data(using: .utf8)!
-            let weather = try decoder.decode(Weather.self, from: weatherData)
+            let weather = try YumemiWeather.fetchWeather(request)
         
             weatherImageView.image = weather.kind.imageWithTintColor
             minimumTemperatureLabel.text = String(weather.minimumTemperature)
@@ -82,6 +74,7 @@ extension ViewController {
             
             case .invalidParameterError:
                 message = "The parameter '\(request)' was not valid."
+                
             case .unknownError:
                 message = "A unknown error occurred while fetching weather with \(request)."
             }
