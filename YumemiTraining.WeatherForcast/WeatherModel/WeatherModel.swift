@@ -9,5 +9,7 @@ import Foundation
 
 protocol WeatherModel : AnyObject {
     
-    func fetchWeather(with request: Weather.Request) throws -> Weather
+    var delegate: WeatherModelDelegate? { get set }
+    
+    func fetchWeatherAsync(with request: Weather.Request, completionHandler: (() -> Void)?)
 }

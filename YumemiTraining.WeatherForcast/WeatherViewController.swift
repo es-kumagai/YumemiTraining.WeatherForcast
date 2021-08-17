@@ -21,7 +21,12 @@ class WeatherViewController: UIViewController {
     var currentArea = "tokyo"
     
     /// The model for fetching a weather data.
-    var weatherModel: WeatherModel!
+    var weatherModel: WeatherModel! {
+        
+        didSet {
+            weatherModel.delegate = self
+        }
+    }
     
     /// The queue for fetching a weather data.
     var fetchingQueue = DispatchQueue(label: "Fetching")
@@ -96,26 +101,38 @@ extension WeatherViewController {
 
         let request = Weather.Request(area: currentArea, date: Weather.Date())
         
-        fetchingQueue.async {
+        weatherModel.fetchWeatherAsync(with: request, completionHandler: completionHandler)
+    }
+}
 
-            DispatchQueue.main.sync(execute: self.weatherFetchingActivityIndicator.startAnimating)
+extension WeatherViewController : WeatherModelDelegate {
+    
+    func weatherModel(_ model: WeatherModel, fetchWillStartWithRequest: Weather.Request) {
+        
+        DispatchQueue.main.async {
             
-            defer {
-                
-                DispatchQueue.main.async(execute: self.weatherFetchingActivityIndicator.stopAnimating)
-                    
-                completionHandler?()
-            }
+            self.weatherFetchingActivityIndicator.startAnimating()
+        }
+    }
+    
+    func weatherModel(_ model: WeatherModel, fetchDidSucceed weather: Weather, request: Weather.Request) {
+        
+        DispatchQueue.main.async {
+
+            self.weatherFetchingActivityIndicator.stopAnimating()
+            self.applyToView(weather: weather)
+        }
+    }
+    
+    func weatherModel(_ model: WeatherModel, fetchDidFailWithError error: Error, request: Weather.Request) {
+        
+        DispatchQueue.main.async {
+
+            self.weatherFetchingActivityIndicator.stopAnimating()
             
-            do {
-                let weather = try self.weatherModel.fetchWeather(with: request)
-                
-                DispatchQueue.main.async {
-                    
-                    self.applyToView(weather: weather)
-                }
-            }
-            catch let error as YumemiWeatherError {
+            switch error {
+            
+            case let error as YumemiWeatherError:
                 
                 let message: String
                 
@@ -129,16 +146,14 @@ extension WeatherViewController {
                 }
                 
                 DispatchQueue.main.async {
-
+                    
                     self.presentErrorAlert(message: message, ofTitle: "Failed to fetch weather")
                 }
-            }
-            catch let error as DecodingError {
                 
+            case let error as DecodingError:
                 fatalError("Decoding error: \(error)")
-            }
-            catch {
                 
+            default:
                 fatalError("Unexpected error: \(error)")
             }
         }
