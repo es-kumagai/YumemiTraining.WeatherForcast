@@ -27,6 +27,11 @@ class ViewController: UIViewController {
         
         reloadWeather()
     }
+    
+    @IBAction func closeButtonDidPush(_ sender: Any) {
+        
+        dismiss(animated: true)
+    }
 }
 
 extension ViewController {

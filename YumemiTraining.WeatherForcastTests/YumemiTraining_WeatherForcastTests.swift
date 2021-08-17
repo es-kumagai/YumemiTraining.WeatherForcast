@@ -68,4 +68,15 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         
         XCTAssertEqual(String(data: jsonData1, encoding: .utf8), #"{"date":"1970-01-01T09:00:00+09:00","area":"tokyo"}"#)
     }
+    
+    func testInstantiateWeatherViewController() throws {
+        
+        let bundle = Bundle(for: ViewController.self)
+        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+        
+        let viewController = storyboard.instantiateWeatherViewController()
+        
+        XCTAssertNotNil(viewController)
+        XCTAssertTrue(viewController is ViewController)
+    }
 }
