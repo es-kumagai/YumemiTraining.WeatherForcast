@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="WeatherViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherViewController" id="BYZ-38-t0r" customClass="WeatherViewController" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="132" y="116"/>
         </scene>
-        <!--New View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="B7M-FT-WHN">
             <objects>
-                <viewController id="I5H-A8-Xkh" customClass="NewViewController" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I5H-A8-Xkh" customClass="RootViewController" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kyE-bg-GL3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

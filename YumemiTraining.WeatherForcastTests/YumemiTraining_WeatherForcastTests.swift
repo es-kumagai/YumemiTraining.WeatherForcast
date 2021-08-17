@@ -71,12 +71,12 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
     
     func testInstantiateWeatherViewController() throws {
         
-        let bundle = Bundle(for: ViewController.self)
+        let bundle = Bundle(for: WeatherViewController.self)
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         
         let viewController = storyboard.instantiateWeatherViewController()
         
         XCTAssertNotNil(viewController)
-        XCTAssertTrue(viewController is ViewController)
+        XCTAssertTrue(viewController is WeatherViewController)
     }
 }

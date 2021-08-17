@@ -8,7 +8,7 @@
 import UIKit
 import YumemiWeather
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
 
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maximumTemperatureLabel: UILabel!
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension WeatherViewController {
     
     /// Present an error alert.
     /// - Parameters:

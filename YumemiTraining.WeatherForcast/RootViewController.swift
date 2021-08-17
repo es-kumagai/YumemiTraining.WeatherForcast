@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NewViewController: UIViewController {
+class RootViewController: UIViewController {
 
-    var weatherViewController: ViewController!
+    var weatherViewController: WeatherViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
