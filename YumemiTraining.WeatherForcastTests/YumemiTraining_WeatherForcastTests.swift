@@ -20,18 +20,20 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
 
     func testWeather() throws {
 
-        let sunny = UIImage(weather: .sunny)
-        sunny.
-        XCTAssertNotNil()
-        XCTAssertNotNil(UIImage(weather: .cloudy))
-        XCTAssertNotNil(UIImage(weather: .rainy))
-    }
+        XCTAssertEqual(Weather.sunny.image, UIImage.sunny)
+        XCTAssertNotEqual(Weather.sunny.image, UIImage.cloudy)
+        XCTAssertNotEqual(Weather.sunny.image, UIImage.rainy)
+        
+        XCTAssertNotEqual(Weather.cloudy.image, UIImage.sunny)
+        XCTAssertEqual(Weather.cloudy.image, UIImage.cloudy)
+        XCTAssertNotEqual(Weather.cloudy.image, UIImage.rainy)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        XCTAssertNotEqual(Weather.rainy.image, UIImage.sunny)
+        XCTAssertNotEqual(Weather.rainy.image, UIImage.cloudy)
+        XCTAssertEqual(Weather.rainy.image, UIImage.rainy)
+        
+        XCTAssertEqual(Weather.sunny.tintColor, .red)
+        XCTAssertEqual(Weather.cloudy.tintColor, .gray)
+        XCTAssertEqual(Weather.rainy.tintColor, .blue)
     }
-
 }
