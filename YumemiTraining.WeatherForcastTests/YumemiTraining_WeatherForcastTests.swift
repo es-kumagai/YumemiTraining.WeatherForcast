@@ -107,37 +107,55 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         let bundle = Bundle(for: WeatherViewController.self)
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         
-        let viewController = storyboard.instantiateWeatherViewController()!
+        let weathers = [
         
-        viewController.loadView()
+            Weather(kind: .sunny, maximumTemperature: 32, minimumTemperature: 15, date: Weather.Date()),
+            Weather(kind: .cloudy, maximumTemperature: 16, minimumTemperature: 8, date: Weather.Date()),
+            Weather(kind: .rainy, maximumTemperature: 12, minimumTemperature: 4, date: Weather.Date()),
+        ]
 
-        let sunnyWeather = Weather(kind: .sunny, maximumTemperature: 32, minimumTemperature: 15, date: Weather.Date())
-        let cloudyWeather = Weather(kind: .cloudy, maximumTemperature: 16, minimumTemperature: 8, date: Weather.Date())
-        let rainyWeather = Weather(kind: .rainy, maximumTemperature: 12, minimumTemperature: 4, date: Weather.Date())
-
-        // SUNNY
-        viewController.weatherModel = ConstantWeatherModel(sunnyWeather)
-        viewController.reloadWeather()
- 
-        XCTAssertEqual(viewController.weatherImageView.image, Weather.Kind.sunny.imageWithTintColor)
-        XCTAssertEqual(viewController.minimumTemperatureLabel.text, sunnyWeather.minimumTemperature.description)
-        XCTAssertEqual(viewController.maximumTemperatureLabel.text, sunnyWeather.maximumTemperature.description)
-
-        // CLOUDY
-        viewController.weatherModel = ConstantWeatherModel(cloudyWeather)
-        viewController.reloadWeather()
- 
-        XCTAssertEqual(viewController.weatherImageView.image, Weather.Kind.cloudy.imageWithTintColor)
-        XCTAssertEqual(viewController.minimumTemperatureLabel.text, cloudyWeather.minimumTemperature.description)
-        XCTAssertEqual(viewController.maximumTemperatureLabel.text, cloudyWeather.maximumTemperature.description)
+        let queue = DispatchQueue(label: "Test")
+        var testedCount = 0
         
-        // RAINY
-        viewController.weatherModel = ConstantWeatherModel(rainyWeather)
-        viewController.reloadWeather()
- 
-        XCTAssertEqual(viewController.weatherImageView.image, Weather.Kind.rainy.imageWithTintColor)
-        XCTAssertEqual(viewController.minimumTemperatureLabel.text, rainyWeather.minimumTemperature.description)
-        XCTAssertEqual(viewController.maximumTemperatureLabel.text, rainyWeather.maximumTemperature.description)
+        for weather in weathers {
+            
+            let viewController = storyboard.instantiateWeatherViewController()!
+            let expectation = XCTestExpectation(description: "\(weather.kind)")
+            
+            viewController.loadView()
 
+            viewController.weatherModel = ConstantWeatherModel(weather)
+
+            queue.async {
+
+                viewController.reloadWeather {
+                    
+                    expectation.fulfill()
+                }
+            }
+            
+            wait(for: [expectation], timeout: 10)
+            
+            DispatchQueue.main.async {
+                
+                XCTAssertEqual(viewController.weatherImageView.image, weather.kind.imageWithTintColor)
+                XCTAssertEqual(viewController.minimumTemperatureLabel.text, weather.minimumTemperature.description)
+                XCTAssertEqual(viewController.maximumTemperatureLabel.text, weather.maximumTemperature.description)
+                
+                testedCount += 1
+            }
+        }
+        
+        let expectation = XCTestExpectation(description: "All Tests")
+        
+        DispatchQueue.main.async {
+            
+            XCTAssertEqual(testedCount, weathers.count)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+        
+        XCTAssertFalse(expectation.isInverted)
     }
 }

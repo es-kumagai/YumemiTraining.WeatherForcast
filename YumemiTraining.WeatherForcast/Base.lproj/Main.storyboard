@@ -31,7 +31,7 @@
                                     <action selector="reloadButtonDidPush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9v-eu-lFJ"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-Qe-PoW">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-Qe-PoW" userLabel="Weather Stack View">
                                 <rect key="frame" x="103.5" y="334.5" width="207" height="227.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dBj-dc-teg">
@@ -63,22 +63,36 @@
                                     <constraint firstItem="vZK-uv-zNn" firstAttribute="width" secondItem="dBj-dc-teg" secondAttribute="width" multiplier="0.5" id="n9G-mY-8Sk"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="25o-1r-r8b" userLabel="Indicator Stack View">
+                                <rect key="frame" x="197" y="562" width="20" height="80"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-4n-Zfc">
+                                        <rect key="frame" x="0.0" y="30" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="FPU-7e-8CE"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gdb-Qe-PoW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PR3-sJ-bJh"/>
+                            <constraint firstItem="25o-1r-r8b" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" id="Zf4-5i-HC3"/>
                             <constraint firstItem="gdb-Qe-PoW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zt1-Ig-y7e"/>
                             <constraint firstItem="nUd-9t-jTI" firstAttribute="centerX" secondItem="vdd-50-Dst" secondAttribute="centerX" id="ab0-PR-8QW"/>
                             <constraint firstItem="N5M-l8-jvY" firstAttribute="centerX" secondItem="vZK-uv-zNn" secondAttribute="centerX" id="mt4-Zu-Hj0"/>
                             <constraint firstItem="dBj-dc-teg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="pJ9-He-9cT"/>
                             <constraint firstItem="nUd-9t-jTI" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" constant="80" id="pU4-7G-DwH"/>
+                            <constraint firstItem="25o-1r-r8b" firstAttribute="centerX" secondItem="gdb-Qe-PoW" secondAttribute="centerX" id="wMO-jz-TX6"/>
                             <constraint firstItem="N5M-l8-jvY" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" constant="80" id="xuI-B9-Ibw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="maximumTemperatureLabel" destination="vZK-uv-zNn" id="93s-lL-02c"/>
                         <outlet property="minimumTemperatureLabel" destination="vdd-50-Dst" id="8UY-j7-3k6"/>
+                        <outlet property="weatherFetchingActivityIndicator" destination="Lxr-4n-Zfc" id="j5Z-id-mGF"/>
                         <outlet property="weatherImageView" destination="dBj-dc-teg" id="Sst-oU-YmB"/>
                     </connections>
                 </viewController>
