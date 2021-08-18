@@ -41,7 +41,10 @@ class WeatherViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadWeather), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: self, queue: nil) { notification in
+            
+            self.reloadWeather()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -96,12 +99,34 @@ extension WeatherViewController {
         maximumTemperatureLabel.text = String(weather.maximumTemperature)
     }
     
-    /// Fetch current weather state and show in `weatherImageView`.
-    func reloadWeather(completionHandler: (() -> Void)? = nil) {
+    /// Fetch current weather state and show in `weatherImageView` then the weather state will be received through delegate.
+    func reloadWeather() {
 
         let request = Weather.Request(area: currentArea, date: Weather.Date())
         
-        weatherModel.fetchWeatherAsync(with: request, completionHandler: completionHandler)
+        weatherModel.fetchWeatherAsync(with: request)
+    }
+    
+    /// Fetch current weather state and show in `weatherImageView` then the `handler` will be invoked when the weather state will be received.
+    func reloadWeather(completionHandler handler: WeatherModel.FetchCompletionHandler?) {
+        
+        let request = Weather.Request(area: currentArea, date: Weather.Date())
+        
+        weatherModel.fetchWeatherAsync(with: request) { result in
+            
+            defer {
+                handler?(result)
+            }
+
+            switch result {
+            
+            case .success(let weather):
+                self.weatherModel(self.weatherModel, fetchDidSucceed: weather, request: request)
+                
+            case .failure(let error):
+                self.weatherModel(self.weatherModel, fetchDidFailWithError: error, request: request)
+            }
+        }
     }
 }
 
@@ -124,38 +149,24 @@ extension WeatherViewController : WeatherModelDelegate {
         }
     }
     
-    func weatherModel(_ model: WeatherModel, fetchDidFailWithError error: Error, request: Weather.Request) {
+    func weatherModel(_ model: WeatherModel, fetchDidFailWithError error: YumemiWeatherError, request: Weather.Request) {
+        
+        var message: String {
+        
+            switch error {
+            
+            case .invalidParameterError:
+                return "The parameter was not valid."
+                
+            case .unknownError:
+                return "A unknown error occurred while fetching weather."
+            }
+        }
         
         DispatchQueue.main.async {
 
-            self.weatherFetchingActivityIndicator.stopAnimating()
-            
-            switch error {
-            
-            case let error as YumemiWeatherError:
-                
-                let message: String
-                
-                switch error {
-                
-                case .invalidParameterError:
-                    message = "The parameter '\(request)' was not valid."
-                    
-                case .unknownError:
-                    message = "A unknown error occurred while fetching weather with \(request)."
-                }
-                
-                DispatchQueue.main.async {
-                    
-                    self.presentErrorAlert(message: message, ofTitle: "Failed to fetch weather")
-                }
-                
-            case let error as DecodingError:
-                fatalError("Decoding error: \(error)")
-                
-            default:
-                fatalError("Unexpected error: \(error)")
-            }
+            self.weatherFetchingActivityIndicator.stopAnimating()                        
+            self.presentErrorAlert(message: message, ofTitle: "Failed to fetch weather")
         }
     }
 }

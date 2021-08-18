@@ -20,12 +20,21 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
             self.weather = weather
         }
         
-        func fetchWeatherAsync(with request: Weather.Request, completionHandler: (() -> Void)?) {
+        func fetchWeatherAsync(with request: Weather.Request) {
+            
+            delegate?.weatherModel(self, fetchWillStartWithRequest: request)
+            
+            DispatchQueue.global().async {
+                
+                self.delegate?.weatherModel(self, fetchDidSucceed: self.weather, request: request)
+            }
+        }
+
+        func fetchWeatherAsync(with request: Weather.Request, completionHandler: WeatherModel.FetchCompletionHandler?) {
             
             DispatchQueue.global().async {
 
-                self.delegate?.weatherModel(self, fetchDidSucceed: self.weather, request: request)
-                completionHandler?()
+                completionHandler?(.success(self.weather))
             }
         }
     }
@@ -133,7 +142,7 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
 
             queue.async {
 
-                viewController.reloadWeather {
+                viewController.reloadWeather { result in
                     
                     expectation.fulfill()
                 }

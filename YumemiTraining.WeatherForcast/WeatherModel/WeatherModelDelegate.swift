@@ -11,5 +11,5 @@ protocol WeatherModelDelegate : AnyObject {
     
     func weatherModel(_ model: WeatherModel, fetchWillStartWithRequest: Weather.Request)
     func weatherModel(_ model: WeatherModel, fetchDidSucceed weather: Weather, request: Weather.Request)
-    func weatherModel(_ model: WeatherModel, fetchDidFailWithError error: Error, request: Weather.Request)
+    func weatherModel(_ model: WeatherModel, fetchDidFailWithError error: YumemiWeatherError, request: Weather.Request)
 }

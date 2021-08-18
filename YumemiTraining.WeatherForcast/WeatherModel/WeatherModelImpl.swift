@@ -13,15 +13,7 @@ final class WeatherModelImpl : NSObject, WeatherModel {
     
     weak var delegate: WeatherModelDelegate?
     
-    /// Fetch a weather data with `request`.
-    /// - Parameter request: An information to specify an area and a date.
-    /// - Returns: The weather data of the point specified with `request`.
-    func fetchWeatherAsync(with request: Weather.Request, completionHandler: (() -> Void)? = nil) {
-        
-        defer {
-            
-            completionHandler?()
-        }
+    func fetchWeatherAsync(with request: Weather.Request, completionHandler: FetchCompletionHandler?) {
         
         do {
             let requestData = try JSONEncoder().encode(request)
@@ -33,21 +25,58 @@ final class WeatherModelImpl : NSObject, WeatherModel {
                     let weatherData = try result.get().data(using: .utf8)!
                     let weather = try JSONDecoder().decode(Weather.self, from: weatherData)
                     
-                    self.delegate?.weatherModel(self, fetchDidSucceed: weather, request: request)
+                    completionHandler?(.success(weather))
+                }
+                catch let error as YumemiWeatherError {
+                    
+                    completionHandler?(.failure(error))
                 }
                 catch {
-                    
-                    self.delegate?.weatherModel(self, fetchDidFailWithError: error, request: request)
+
+                    completionHandler?(.failure(.unknownError))
                 }
             }
         }
         catch is EncodingError {
             
-            delegate?.weatherModel(self, fetchDidFailWithError: YumemiWeatherError.invalidParameterError, request: request)
+            completionHandler?(.failure(.invalidParameterError))
         }
         catch {
             
-            delegate?.weatherModel(self, fetchDidFailWithError: error, request: request)
+            completionHandler?(.failure(.unknownError))
+        }
+    }
+    
+    func fetchWeatherAsync(with request: Weather.Request) {
+        
+        delegate?.weatherModel(self, fetchWillStartWithRequest: request)
+        
+        DispatchQueue.global().async {
+            
+            do {
+
+                let requestData = try JSONEncoder().encode(request)
+                let requestJson = String(data: requestData, encoding: .utf8)!
+                
+                let weatherString = try YumemiWeather.syncFetchWeather(requestJson)
+
+                let weatherData = weatherString.data(using: .utf8)!
+                let weather = try JSONDecoder().decode(Weather.self, from: weatherData)
+                
+                self.delegate?.weatherModel(self, fetchDidSucceed: weather, request: request)
+            }
+            catch is EncodingError {
+                
+                self.delegate?.weatherModel(self, fetchDidFailWithError: .invalidParameterError, request: request)
+            }
+            catch let error as YumemiWeatherError {
+                
+                self.delegate?.weatherModel(self, fetchDidFailWithError: error, request: request)
+            }
+            catch {
+                
+                self.delegate?.weatherModel(self, fetchDidFailWithError: .unknownError, request: request)
+            }
         }
     }
 }
