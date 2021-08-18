@@ -13,23 +13,12 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
     final class ConstantWeatherModel : WeatherModel {
         
         var weather: Weather
-        weak var delegate: WeatherModelDelegate?
         
         init(_ weather: Weather) {
         
             self.weather = weather
         }
         
-        func fetchWeatherAsync(with request: Weather.Request) {
-            
-            delegate?.weatherModel(self, fetchWillStartWithRequest: request)
-            
-            DispatchQueue.global().async {
-                
-                self.delegate?.weatherModel(self, fetchDidSucceed: self.weather, request: request)
-            }
-        }
-
         func fetchWeatherAsync(with request: Weather.Request, completionHandler: WeatherModel.FetchCompletionHandler?) {
             
             DispatchQueue.global().async {
