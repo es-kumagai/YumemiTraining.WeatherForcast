@@ -31,6 +31,11 @@ class WeatherViewController: UIViewController {
     /// The queue for fetching a weather data.
     var fetchingQueue = DispatchQueue(label: "Fetching")
     
+    deinit {
+    
+        NSLog("\(self) has been deinitialized.")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,17 +46,14 @@ class WeatherViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: self, queue: nil) { notification in
-            
-            self.reloadWeather()
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveApplicationDidBecomeActiveNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
-    
+        
     override func viewDidDisappear(_ animated: Bool) {
         
         super.viewDidDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     @IBAction func reloadButtonDidPush(_ sender: Any) {
@@ -62,6 +64,14 @@ class WeatherViewController: UIViewController {
     @IBAction func closeButtonDidPush(_ sender: Any) {
         
         dismiss(animated: true)
+    }
+}
+
+extension WeatherViewController {
+    
+    func receiveApplicationDidBecomeActiveNotification(_ notification: Notification) {
+        
+        reloadWeather()
     }
 }
 

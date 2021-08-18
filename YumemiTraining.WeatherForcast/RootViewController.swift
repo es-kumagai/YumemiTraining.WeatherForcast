@@ -9,22 +9,16 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-    var weatherViewController: WeatherViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        weatherViewController = storyboard!.instantiateWeatherViewController()!
-
-        weatherViewController.modalPresentationStyle = .fullScreen
-        weatherViewController.weatherModel = WeatherModelImpl()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        
-        present(weatherViewController, animated: true)
+                
+        present(makeWeatherViewController(), animated: true)
     }
 
     /*
@@ -37,4 +31,19 @@ class RootViewController: UIViewController {
     }
     */
 
+}
+
+extension RootViewController {
+    
+    /// Make an instance of weather view controller.
+    /// - Returns: The created instance.
+    func makeWeatherViewController() -> WeatherViewController {
+        
+        let weatherViewController = storyboard!.instantiateWeatherViewController()!
+
+        weatherViewController.modalPresentationStyle = .fullScreen
+        weatherViewController.weatherModel = WeatherModelImpl()
+        
+        return weatherViewController
+    }
 }
