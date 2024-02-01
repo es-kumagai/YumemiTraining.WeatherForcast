@@ -1,0 +1,3 @@
+[submodule "ios-training"]
+	path = ios-training
+	url = https://github.com/yumemi-inc/ios-training.git
