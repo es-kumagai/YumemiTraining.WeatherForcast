@@ -1,34 +1,88 @@
-株式会社ゆめみ さんの [iOS 研修課題](https://notion.yumemi.co.jp/ios-%E7%A0%94%E4%BF%AE%E8%AA%B2%E9%A1%8C) に取り組んでみたときのリポジトリーです。個人的に解答してみたもので、第三者によるレビューは受けていません。
+# 株式会社ゆめみ iOS研修
 
-# 内容
+[![Test](https://github.com/yumemi-inc/ios-training/actions/workflows/test.yml/badge.svg)](https://github.com/yumemi-inc/ios-training/actions/workflows/test.yml)
 
-## ios-training
+業務に近いかたちでアプリ開発を行いながら、  
+iOSアプリ開発の基礎復習、実務スキルを身に付けるための研修です。
 
-研修課題を解いてみた時点での iOS 研修課題の複製です。
+## 概要
+天気予報アプリを開発していただきます。  
 
-サブモジュールとして、当時の最新コミット [e360eb9303e20a4ab3b69927d87458981e8c47d4](https://github.com/yumemi-inc/ios-training/tree/e360eb9303e20a4ab3b69927d87458981e8c47d4) を`ios-training` フォルダーに割り当てています。
+## 環境
+XcodeとSwiftは、基本的に最新の安定版を利用すること
 
-## YumemiTraining.WeatherForcast.xcodeproj
+## 天気予報API
+`YumemiWeather`というライブラリを使用してください。  
+SwiftPackageManagerに対応しています。
 
-研修課題を解いていくのに使うメインの Xcode プロジェクトです。
+インストール方法やAPI仕様は以下を参照ください。  
+[YumemiWeather](Documentation/YumemiWeather.md)
 
-課題ごとにブランチを切って進めてあります。
+## 研修の進め方
+1. 空白の研修用のリポジトリを作成
+    1. organizationでレビュアーユーザグループを設定してある場合、該当organizationでリポジトリを作成するとレビュアー設定しやすいです。ゆめみの場合は [yumemi-training](https://github.com/yumemi-training) で作成します。
+    1. 研修終了後にご自身のGitHubアカウントにリポジトリを移動して構いません。
+1. 研修用リポジトリにXcodeProjectを作成  
+1. XcodeProjectに[YumemiWeather](Documentation/YumemiWeather.md)を導入
+1. `main`ブランチをPush
+1. 課題用のブランチを切って実施  
+`session/{#}`
+1. 完了したらPull Requestを作成し、レビュー依頼  
+`main` <-- `session/{#}`
+1. Approvalされたらマージ
+1. 次の課題を実施
 
-- [session/1](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/1)
-- [session/2](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/2)
-- [session/3](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/3)
-- [session/4](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/4)
-- [session/5](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/5)
-- [session/6](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/6)
-- [session/7](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/7)
-- [session/8](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/8)
-- [session/9](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/9)
-- [session/10](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/10)
-- [session/11](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/11)
-- [session/12](https://github.com/es-kumagai/YumemiTraining.WeatherForcast/tree/session/12)
+全ての課題をクリアしたら修了です！
 
-## Session12
+### レビュー待ちのとき
+レビュー待ちの時は次の課題に先行着手しましょう。  
+`git rebase` コマンドを使ってみましょう。[^git-rebase]  
+Session1がレビュー待ちの場合...
+1. `session/1`ブランチから`session/2`を切る
+1. Session2を進める
+1. `session/1`のマージ後、`session/2`を`main`でrebaseする  
 
-研修課題の中でも特に `Session 12` は、それまでの課題とは独立して用意されているため、別途サブモジュールに切り出して `Session12` フォルダーに割り当てています。
+# Session
 
-このリポジトリーは [es-kumagai/YumemiTraining.WeatherForcast-Session12](https://github.com/es-kumagai/YumemiTraining.WeatherForcast-Session12) として存在していて、ここに `fix` ブランチを切って課題に取り組んでみました。
+**■ アプリを形にする**
+
+1) [AutoLayout](Documentation/AutoLayout.md)
+1) [API](Documentation/API.md)
+
+**■ 実践練習**
+
+3) [Error](Documentation/Error.md)
+1) [JSON](Documentation/JSON.md)
+1) [Codable](Documentation/Codable.md)
+
+**■ アプリの高度な制御**
+
+6) [Lifecycle](Documentation/VC_Lifecycle.md)
+1) [NotificationCenter](Documentation/NotificationCenter.md)
+1) [UnitTest](Documentation/UnitTest.md)
+
+**■ 非同期処理**
+
+9) [ThreadBlock](Documentation/ThreadBlock.md)
+1) [Delegate](Documentation/Delegate.md)
+1) [Callback](Documentation/Callback.md)
+1) [Concurrency](Documentation/Concurrency.md)
+
+**■ 定番の UI 表現 (UIKit)**
+
+13) [UITableView](Documentation/UITableView.md)
+1) [UINavigationController](Documentation/UINavigationController.md)
+
+**■ 実力チェック**
+
+15) [BugFix](Documentation/BugFix.md)
+
+[^git-rebase]: このようなケースで `rebase` コマンドを使うことが必ずしも正しいとは限りません。 どのような方法をとるかはチームで議論するべきと考えます。 ただ、この研修は「`rebase`コマンドを使ってみる」ことも研修の一部としています。
+
+## 補足事項
+- ライブラリ・ツール群に制約はありません
+- 後の課題に含まれる技術要素を先に取り入れてもOKです
+
+## 附録
+
+[関連ワード・動画索引（熊谷さんのやさしい Swift 勉強会）](https://yumemi.notion.site/iOS-e22f8a8ab59d4b43b039bc201b3ceaf3)

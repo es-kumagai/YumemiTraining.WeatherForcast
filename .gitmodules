@@ -1,6 +1,6 @@
 [submodule "ios-training"]
 	path = ios-training
 	url = https://github.com/yumemi-inc/ios-training.git
-[submodule "Session12"]
-	path = Session12
-	url = https://github.com/es-kumagai/YumemiTraining.WeatherForcast-Session12.git
+[submodule "Session15"]
+	path = Session15
+	url = https://github.com/es-kumagai/YumemiTraining.WeatherForcast-Session15.git
