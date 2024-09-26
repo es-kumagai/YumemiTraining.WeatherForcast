@@ -21,12 +21,7 @@ class WeatherViewController: UIViewController {
     var currentArea = "tokyo"
     
     /// The model for fetching a weather data.
-    var weatherModel: WeatherModel! {
-        
-        didSet {
-            weatherModel.delegate = self
-        }
-    }
+    var weatherModel: WeatherModel!
     
     /// The queue for fetching a weather data.
     var fetchingQueue = DispatchQueue(label: "Fetching")
@@ -111,72 +106,25 @@ extension WeatherViewController {
     
     /// Fetch current weather state and show in `weatherImageView` then the weather state will be received through delegate.
     func reloadWeather() {
-
-        let request = Weather.Request(area: currentArea, date: Weather.Date())
         
-        weatherModel.fetchWeatherAsync(with: request)
-    }
-    
-    /// Fetch current weather state and show in `weatherImageView` then the `handler` will be invoked when the weather state will be received.
-    func reloadWeather(completionHandler handler: WeatherModel.FetchCompletionHandler?) {
+        self.weatherFetchingActivityIndicator.startAnimating()
         
-        let request = Weather.Request(area: currentArea, date: Weather.Date())
-        
-        weatherModel.fetchWeatherAsync(with: request) { result in
+        Task { [unowned self] in
             
             defer {
-                handler?(result)
+                self.weatherFetchingActivityIndicator.stopAnimating()
             }
-
-            switch result {
             
-            case .success(let weather):
-                self.weatherModel(self.weatherModel, fetchDidSucceed: weather, request: request)
+            let request = Weather.Request(area: currentArea, date: Weather.Date())
+            
+            do {
+                let weather = try await weatherModel.fetchWeather(with: request)
+                applyToView(weather: weather)
                 
-            case .failure(let error):
-                self.weatherModel(self.weatherModel, fetchDidFailWithError: error, request: request)
-            }
+            } catch {
+                presentErrorAlert(message: error.localizedDescription, ofTitle: "Failed to fetch weather")
+            }            
         }
     }
 }
 
-extension WeatherViewController : WeatherModelDelegate {
-    
-    func weatherModel(_ model: WeatherModel, fetchWillStartWithRequest: Weather.Request) {
-        
-        DispatchQueue.main.async {
-            
-            self.weatherFetchingActivityIndicator.startAnimating()
-        }
-    }
-    
-    func weatherModel(_ model: WeatherModel, fetchDidSucceed weather: Weather, request: Weather.Request) {
-        
-        DispatchQueue.main.async {
-
-            self.weatherFetchingActivityIndicator.stopAnimating()
-            self.applyToView(weather: weather)
-        }
-    }
-    
-    func weatherModel(_ model: WeatherModel, fetchDidFailWithError error: YumemiWeatherError, request: Weather.Request) {
-        
-        var message: String {
-        
-            switch error {
-            
-            case .invalidParameterError:
-                return "The parameter was not valid."
-                
-            case .unknownError:
-                return "A unknown error occurred while fetching weather."
-            }
-        }
-        
-        DispatchQueue.main.async {
-
-            self.weatherFetchingActivityIndicator.stopAnimating()                        
-            self.presentErrorAlert(message: message, ofTitle: "Failed to fetch weather")
-        }
-    }
-}
