@@ -30,4 +30,12 @@ final class WeatherModelImpl : NSObject, WeatherModel {
             }
         }
     }
+    
+    func fetchWeatherList(with request: Weather.ListRequest) async throws -> WeatherList {
+
+        let weatherList = try await YumemiWeather.asyncFetchWeatherList(request.jsonString)
+        let weatherListData = weatherList.data(using: .utf8)!
+        
+        return try JSONDecoder().decode(WeatherList.self, from: weatherListData)
+    }
 }

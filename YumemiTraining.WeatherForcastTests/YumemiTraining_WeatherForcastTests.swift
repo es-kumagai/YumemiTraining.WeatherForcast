@@ -49,21 +49,21 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
 
     func testWeatherKind() throws {
 
-        XCTAssertEqual(Weather.Kind.sunny.image, UIImage.sunny)
-        XCTAssertNotEqual(Weather.Kind.sunny.image, UIImage.cloudy)
-        XCTAssertNotEqual(Weather.Kind.sunny.image, UIImage.rainy)
+        XCTAssertEqual(Weather.Condition.sunny.image, UIImage.sunny)
+        XCTAssertNotEqual(Weather.Condition.sunny.image, UIImage.cloudy)
+        XCTAssertNotEqual(Weather.Condition.sunny.image, UIImage.rainy)
         
-        XCTAssertNotEqual(Weather.Kind.cloudy.image, UIImage.sunny)
-        XCTAssertEqual(Weather.Kind.cloudy.image, UIImage.cloudy)
-        XCTAssertNotEqual(Weather.Kind.cloudy.image, UIImage.rainy)
+        XCTAssertNotEqual(Weather.Condition.cloudy.image, UIImage.sunny)
+        XCTAssertEqual(Weather.Condition.cloudy.image, UIImage.cloudy)
+        XCTAssertNotEqual(Weather.Condition.cloudy.image, UIImage.rainy)
 
-        XCTAssertNotEqual(Weather.Kind.rainy.image, UIImage.sunny)
-        XCTAssertNotEqual(Weather.Kind.rainy.image, UIImage.cloudy)
-        XCTAssertEqual(Weather.Kind.rainy.image, UIImage.rainy)
+        XCTAssertNotEqual(Weather.Condition.rainy.image, UIImage.sunny)
+        XCTAssertNotEqual(Weather.Condition.rainy.image, UIImage.cloudy)
+        XCTAssertEqual(Weather.Condition.rainy.image, UIImage.rainy)
         
-        XCTAssertEqual(Weather.Kind.sunny.tintColor, .red)
-        XCTAssertEqual(Weather.Kind.cloudy.tintColor, .gray)
-        XCTAssertEqual(Weather.Kind.rainy.tintColor, .blue)
+        XCTAssertEqual(Weather.Condition.sunny.tintColor, .red)
+        XCTAssertEqual(Weather.Condition.cloudy.tintColor, .gray)
+        XCTAssertEqual(Weather.Condition.rainy.tintColor, .blue)
     }
     
     func testWeatherCodec() throws {
@@ -85,7 +85,7 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         let weather1 = try decoder.decode(Weather.self, from: weatherData1)
         let encodedWeatherData1 = try encoder.encode(weather1)
         
-        XCTAssertEqual(weather1.kind, .sunny)
+        XCTAssertEqual(weather1.condition, .sunny)
         XCTAssertEqual(weather1.maximumTemperature, 20)
         XCTAssertEqual(weather1.minimumTemperature, -20)
         XCTAssertEqual(weather1.date.rawDate, Calendar.current.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0)))
@@ -134,7 +134,7 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
         for weather in weathers {
             
             let viewController = storyboard.instantiateWeatherViewController()!
-            let expectation = XCTestExpectation(description: "\(weather.kind)")
+            let expectation = XCTestExpectation(description: "\(weather.condition)")
             
             viewController.loadView()
 
@@ -152,7 +152,7 @@ class YumemiTraining_WeatherForcastTests: XCTestCase {
             
             DispatchQueue.main.async {
                 
-                XCTAssertEqual(viewController.weatherImageView.image, weather.kind.imageWithTintColor)
+                XCTAssertEqual(viewController.weatherImageView.image, weather.condition.imageWithTintColor)
                 XCTAssertEqual(viewController.minimumTemperatureLabel.text, weather.minimumTemperature.description)
                 XCTAssertEqual(viewController.maximumTemperatureLabel.text, weather.maximumTemperature.description)
                 

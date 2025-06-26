@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yumemi-inc/ios-training.git",
       "state" : {
-        "revision" : "b2667251bdeb44862a3b0cf6a77a62c08b0ce3ca",
-        "version" : "1.1.0"
+        "revision" : "6f2de8449a9452486a26b0f83b0c522d5c126644",
+        "version" : "2.2.0"
       }
     }
   ],

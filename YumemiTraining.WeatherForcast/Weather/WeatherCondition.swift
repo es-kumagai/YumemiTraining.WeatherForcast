@@ -1,5 +1,5 @@
 //
-//  WeatherKind.swift
+//  WeatherCondition.swift
 //  YumemiTraining.WeatherForcast
 //
 //  Created by Tomohiro Kumagai on 2021/08/17.
@@ -8,7 +8,7 @@
 extension Weather {
     
     /// A type that express a kind of weather.
-    enum Kind : String {
+    enum Condition : String {
         
         case sunny = "sunny"
         case cloudy = "cloudy"
@@ -16,6 +16,6 @@ extension Weather {
     }
 }
 
-extension Weather.Kind : Codable {
+extension Weather.Condition : Codable {
     
 }

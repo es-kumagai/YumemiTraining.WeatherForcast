@@ -10,35 +10,29 @@ import YumemiWeather
 
 extension Weather {
     
-    struct Request {
-
-        var area: Area
+    struct ListRequest {
+        var areas: [Area]
         var date: Weather.Date
     }
 }
 
-extension Weather.Request : Codable {
-    
+extension Weather.ListRequest : Codable {
 }
 
-extension Weather.Request : Equatable {
-    
+extension Weather.ListRequest : Equatable {
 }
 
-extension Weather.Request {
+extension Weather.ListRequest {
     
     var jsonString: String {
-       
         let encoder = JSONEncoder()
-        
         return try! String(data: encoder.encode(self), encoding: .utf8)!
     }
 }
 
-extension Weather.Request : CustomDebugStringConvertible {
+extension Weather.ListRequest : CustomDebugStringConvertible {
     
     var debugDescription: String {
-        
-        "Area: \(area), Date: \(date)"
+        "Areas: \(areas), Date: \(date)"
     }
 }
