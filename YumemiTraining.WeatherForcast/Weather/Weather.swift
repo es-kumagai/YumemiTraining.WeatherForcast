@@ -10,7 +10,7 @@ import Foundation
 /// A type that express a weather data.
 struct Weather {
     
-    var kind: Kind
+    var condition: Condition
     var maximumTemperature: Int
     var minimumTemperature: Int
     var date: Date
@@ -20,9 +20,9 @@ extension Weather : Codable {
     
     enum CodingKeys : String, CodingKey {
         
-        case kind = "weather"
-        case maximumTemperature = "max_temp"
-        case minimumTemperature = "min_temp"
+        case condition = "weather_condition"
+        case maximumTemperature = "max_temperature"
+        case minimumTemperature = "min_temperature"
         case date = "date"
     }
 }

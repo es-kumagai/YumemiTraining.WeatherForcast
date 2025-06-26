@@ -9,6 +9,13 @@ import UIKit
 
 class RootViewController: UIViewController {
 
+    private(set) var weatherModel: WeatherModel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        weatherModel = WeatherModelImpl()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +25,7 @@ class RootViewController: UIViewController {
         
         super.viewDidAppear(animated)
                 
-        present(makeWeatherViewController(), animated: true)
+        present(makeWeatherTableViewController(), animated: true)
     }
 
     /*
@@ -38,12 +45,10 @@ extension RootViewController {
     /// Make an instance of weather view controller.
     /// - Returns: The created instance.
     func makeWeatherViewController() -> WeatherViewController {
-        
-        let weatherViewController = storyboard!.instantiateWeatherViewController()!
-
-        weatherViewController.modalPresentationStyle = .fullScreen
-        weatherViewController.weatherModel = WeatherModelImpl()
-        
-        return weatherViewController
+        storyboard!.instantiateWeatherViewController(with: weatherModel, modalPresentationStyle: .fullScreen)!
+    }
+    
+    func makeWeatherTableViewController() -> WeatherTableViewController {
+        storyboard!.instantiateWeatherTableViewController(with: weatherModel, modalPresentationStyle: .fullScreen)!
     }
 }

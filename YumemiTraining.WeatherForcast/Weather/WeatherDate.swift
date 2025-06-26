@@ -41,6 +41,10 @@ extension Weather {
 
 extension Weather.Date {
     
+    static var now: Self {
+        Self()
+    }
+    
     init() {
         
         self.init(rawDate: Date())

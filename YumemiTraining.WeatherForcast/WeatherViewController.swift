@@ -11,17 +11,54 @@ import YumemiWeather
 @objcMembers
 class WeatherViewController: UIViewController {
 
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var maximumTemperatureLabel: UILabel!
-    @IBOutlet weak var minimumTemperatureLabel: UILabel!
-
-    @IBOutlet weak var weatherFetchingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var areaLabel: UILabel!
+    @IBOutlet private var weatherImageView: UIImageView!
+    @IBOutlet private var maximumTemperatureLabel: UILabel!
+    @IBOutlet private var minimumTemperatureLabel: UILabel!
     
-    /// The area that supposing we are in.
-    var currentArea = "tokyo"
+    @IBOutlet private var reloadButton: UIButton!
+
+    @IBOutlet private var weatherFetchingActivityIndicator: UIActivityIndicatorView!
+    
+    enum DataSource {
+        case fetching(with: WeatherModel, currentArea: Area)
+        case fixed(Weather, area: Area)
+    }
+    
+    /// The data source.
+    var dataSource: DataSource!
     
     /// The model for fetching a weather data.
-    var weatherModel: WeatherModel!
+    var weatherModel: WeatherModel? {
+        switch dataSource! {
+        case .fetching(let model, _):
+            model
+            
+        case .fixed:
+            nil
+        }
+    }
+    
+    var hasWeatherModel: Bool {
+        switch dataSource! {
+        case .fetching:
+            true
+            
+        case .fixed:
+            false
+        }
+    }
+    
+    /// The current area.
+    var currentArea: Area! {
+        switch dataSource {
+        case .fetching(_, let area), .fixed(_, let area):
+            area
+            
+        case nil:
+            nil
+        }
+    }
     
     /// The queue for fetching a weather data.
     var fetchingQueue = DispatchQueue(label: "Fetching")
@@ -34,12 +71,17 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        clearTemperatureLabels()
+        reloadButton.isEnabled = hasWeatherModel
+        clearLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        if case .fixed(let weather, let area) = dataSource {
+            applyToView(weather: weather, in: area)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(receiveApplicationDidBecomeActiveNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -66,46 +108,36 @@ extension WeatherViewController {
     
     func receiveApplicationDidBecomeActiveNotification(_ notification: Notification) {
         
-        reloadWeather()
+        if hasWeatherModel {
+            reloadWeather()
+        }
     }
 }
 
 extension WeatherViewController {
     
-    /// Present an error alert.
-    /// - Parameters:
-    ///   - message: The message to convey to a user.
-    ///   - ofTitle: the text for this alert.
-    ///   - actionHandler: The action that will be invoked
-    ///                    when touch the 'OK' button in the alert.
-    func presentErrorAlert(message: String, ofTitle title: String, actionHandler: ((_ action: UIAlertAction) -> Void)? = nil) {
-    
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: actionHandler)
-        
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: true)
-    }
-    
     /// Reset the labels for temperature.
-    func clearTemperatureLabels() {
-        
+    func clearLabels() {
+        areaLabel.text = "--"
         minimumTemperatureLabel.text = "--"
         maximumTemperatureLabel.text = "--"
     }
     
     /// Apply `weather` data to view.
     /// - Parameter weather: A weather data applying to view.
-    func applyToView(weather: Weather) {
-        
-        weatherImageView.image = weather.kind.imageWithTintColor
+    func applyToView(weather: Weather, in area: Area) {
+        areaLabel.text = "\(area)"
+        weatherImageView.image = weather.condition.imageWithTintColor
         minimumTemperatureLabel.text = String(weather.minimumTemperature)
         maximumTemperatureLabel.text = String(weather.maximumTemperature)
     }
     
     /// Fetch current weather state and show in `weatherImageView` then the weather state will be received through delegate.
     func reloadWeather() {
+        
+        guard let weatherModel else {
+            preconditionFailure("Cannot reload weather data because no weather model were specified.")
+        }
         
         self.weatherFetchingActivityIndicator.startAnimating()
         
@@ -115,11 +147,11 @@ extension WeatherViewController {
                 self.weatherFetchingActivityIndicator.stopAnimating()
             }
             
-            let request = Weather.Request(area: currentArea, date: Weather.Date())
+            let request = Weather.Request(area: currentArea, date: .now)
             
             do {
                 let weather = try await weatherModel.fetchWeather(with: request)
-                applyToView(weather: weather)
+                applyToView(weather: weather, in: currentArea)
                 
             } catch {
                 presentErrorAlert(message: error.localizedDescription, ofTitle: "Failed to fetch weather")
