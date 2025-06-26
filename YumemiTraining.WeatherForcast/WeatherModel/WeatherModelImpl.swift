@@ -8,40 +8,26 @@
 import YumemiWeather
 import Foundation
 
-@objcMembers
 final class WeatherModelImpl : NSObject, WeatherModel {
     
-    func fetchWeatherAsync(with request: Weather.Request, completionHandler: FetchCompletionHandler?) {
+    func fetchWeather(with request: Weather.Request) async throws -> Weather {
         
-        do {
-            let requestData = try JSONEncoder().encode(request)
-            let requestJson = String(data: requestData, encoding: .utf8)!
+        try await withCheckedThrowingContinuation { continuation in
             
-            YumemiWeather.asyncFetchWeather(requestJson) { result in
+            do {
+                let requestData = try JSONEncoder().encode(request)
+                let requestJson = String(data: requestData, encoding: .utf8)!
                 
-                do {
-                    let weatherData = try result.get().data(using: .utf8)!
-                    let weather = try JSONDecoder().decode(Weather.self, from: weatherData)
-                    
-                    completionHandler?(.success(weather))
-                }
-                catch let error as YumemiWeatherError {
-                    
-                    completionHandler?(.failure(error))
-                }
-                catch {
-
-                    completionHandler?(.failure(.unknownError))
-                }
+                let weatherString = try YumemiWeather.syncFetchWeather(requestJson)
+                
+                let weatherData = weatherString.data(using: .utf8)!
+                let weather = try JSONDecoder().decode(Weather.self, from: weatherData)
+                
+                continuation.resume(returning: weather)
             }
-        }
-        catch is EncodingError {
-            
-            completionHandler?(.failure(.invalidParameterError))
-        }
-        catch {
-            
-            completionHandler?(.failure(.unknownError))
+            catch {
+                continuation.resume(throwing: error)
+            }
         }
     }
 }

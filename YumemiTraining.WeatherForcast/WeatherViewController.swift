@@ -104,44 +104,27 @@ extension WeatherViewController {
         maximumTemperatureLabel.text = String(weather.maximumTemperature)
     }
     
-    /// Fetch current weather state and show in `weatherImageView` then the `handler` will be invoked when the weather state will be received.
-    func reloadWeather(completionHandler handler: WeatherModel.FetchCompletionHandler? = nil) {
-
-        DispatchQueue.main.async {
-
-            self.weatherFetchingActivityIndicator.startAnimating()
-        }
+    /// Fetch current weather state and show in `weatherImageView` then the weather state will be received through delegate.
+    func reloadWeather() {
         
-        let request = Weather.Request(area: currentArea, date: Weather.Date())
+        self.weatherFetchingActivityIndicator.startAnimating()
         
-        weatherModel.fetchWeatherAsync(with: request) { result in
-                        
-            handler?(result)
-
-            DispatchQueue.main.async {
-                
+        Task { [unowned self] in
+            
+            defer {
                 self.weatherFetchingActivityIndicator.stopAnimating()
-                
-                do {
-                    try self.applyToView(weather: result.get())
-                }
-                catch {
-                    
-                    var message: String {
-                    
-                        switch error {
-                        
-                        case YumemiWeatherError.invalidParameterError:
-                            return "The parameter was not valid."
-                            
-                        default:
-                            return "A unknown error occurred while fetching weather."
-                        }
-                    }
-                    
-                    self.presentErrorAlert(message: message, ofTitle: "Failed to fetch weather")
-                }
             }
+            
+            let request = Weather.Request(area: currentArea, date: Weather.Date())
+            
+            do {
+                let weather = try await weatherModel.fetchWeather(with: request)
+                applyToView(weather: weather)
+                
+            } catch {
+                presentErrorAlert(message: error.localizedDescription, ofTitle: "Failed to fetch weather")
+            }            
         }
     }
 }
+
