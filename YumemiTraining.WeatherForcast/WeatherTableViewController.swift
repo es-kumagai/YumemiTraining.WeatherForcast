@@ -16,18 +16,20 @@ final class WeatherTableViewController: UIViewController {
     /// The indicator for fetching.
     @IBOutlet private var weatherFetchingActivityIndicator: UIActivityIndicatorView!
     
-    /// The model for fetching a weather data.
-    var weatherModel: WeatherModel! {
-        didSet {
-            dataSource.weatherModel = weatherModel
-        }
-    }
-    
     /// The data source for the table view.
     @IBOutlet private var dataSource: WeatherTableViewDataSource!
     
     /// Whether a fetch is currently in progress
     private var isFetching: Bool = false
+    
+    /// The selected weather list item.
+    private var selectedWeatherItem: WeatherList.Item? {
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            return nil
+        }
+        
+        return dataSource.weatherItem(at: indexPath)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,12 +96,15 @@ final class WeatherTableViewController: UIViewController {
 extension WeatherTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath) as! WeatherTableViewCell
-        let item = cell.weatherListItem!
-        let viewController = storyboard!.instantiateWeatherViewController(with: item.info, in: item.area, modalPresentationStyle: .fullScreen)!
-        
-        present(viewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let destination = segue.destination as! WeatherViewController
+        let weatherItem = selectedWeatherItem!
+        
+        destination.navigationItem.title = "\(weatherItem.area)"
+        destination.dataSource = .fixed(weatherItem.info, area: weatherItem.area)
     }
 }
