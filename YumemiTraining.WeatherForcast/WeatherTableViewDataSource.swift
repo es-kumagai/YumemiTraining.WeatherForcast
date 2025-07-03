@@ -12,7 +12,7 @@ import YumemiWeather
 final class WeatherTableViewDataSource: NSObject, UITableViewDataSource {
     
     /// The model for fetching a weather data.
-    var weatherModel: WeatherModel!
+    let weatherModel: WeatherModel! = WeatherModelImpl()
 
     /// The wether data.
     var weatherList = WeatherList()
@@ -36,5 +36,9 @@ final class WeatherTableViewDataSource: NSObject, UITableViewDataSource {
         let date = Weather.Date()
         
         weatherList = try await weatherModel.fetchWeatherList(in: areas, at: date)
+    }
+    
+    func weatherItem(at indexPath: IndexPath) -> WeatherList.Item {
+        weatherList[indexPath.row]
     }
 }

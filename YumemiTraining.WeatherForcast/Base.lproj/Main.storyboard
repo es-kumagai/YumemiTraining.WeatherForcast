@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I5H-A8-Xkh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qBD-7h-mjk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -18,26 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUd-9t-jTI">
-                                <rect key="frame" x="136" y="642" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeButtonDidPush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IkU-JX-hVF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5M-l8-jvY">
-                                <rect key="frame" x="235.5" y="642" width="47" height="30"/>
-                                <state key="normal" title="Reload"/>
-                                <connections>
-                                    <action selector="reloadButtonDidPush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9v-eu-lFJ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-VF-OB7" userLabel="Area">
-                                <rect key="frame" x="179" y="285" width="56" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-Qe-PoW" userLabel="Weather Stack View">
                                 <rect key="frame" x="103.5" y="334.5" width="207" height="227.5"/>
                                 <subviews>
@@ -86,47 +66,46 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xMg-VF-OB7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MMO-xO-fF1"/>
                             <constraint firstItem="gdb-Qe-PoW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PR3-sJ-bJh"/>
-                            <constraint firstItem="xMg-VF-OB7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WZY-Fb-naZ"/>
                             <constraint firstItem="25o-1r-r8b" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" id="Zf4-5i-HC3"/>
                             <constraint firstItem="gdb-Qe-PoW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zt1-Ig-y7e"/>
-                            <constraint firstItem="nUd-9t-jTI" firstAttribute="centerX" secondItem="vdd-50-Dst" secondAttribute="centerX" id="ab0-PR-8QW"/>
-                            <constraint firstItem="N5M-l8-jvY" firstAttribute="centerX" secondItem="vZK-uv-zNn" secondAttribute="centerX" id="mt4-Zu-Hj0"/>
                             <constraint firstItem="dBj-dc-teg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="pJ9-He-9cT"/>
-                            <constraint firstItem="nUd-9t-jTI" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" constant="80" id="pU4-7G-DwH"/>
                             <constraint firstItem="25o-1r-r8b" firstAttribute="centerX" secondItem="gdb-Qe-PoW" secondAttribute="centerX" id="wMO-jz-TX6"/>
-                            <constraint firstItem="N5M-l8-jvY" firstAttribute="top" secondItem="gdb-Qe-PoW" secondAttribute="bottom" constant="80" id="xuI-B9-Ibw"/>
-                            <constraint firstItem="gdb-Qe-PoW" firstAttribute="top" secondItem="xMg-VF-OB7" secondAttribute="bottom" constant="16" id="zB4-Zd-xNA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="k1E-GR-HlP"/>
                     <connections>
-                        <outlet property="areaLabel" destination="xMg-VF-OB7" id="1Id-AR-OL5"/>
                         <outlet property="maximumTemperatureLabel" destination="vZK-uv-zNn" id="93s-lL-02c"/>
                         <outlet property="minimumTemperatureLabel" destination="vdd-50-Dst" id="8UY-j7-3k6"/>
-                        <outlet property="reloadButton" destination="N5M-l8-jvY" id="Aed-Nc-xGm"/>
+                        <outlet property="reloadButton" destination="ayK-nt-KZY" id="M4b-tG-Pjy"/>
                         <outlet property="weatherFetchingActivityIndicator" destination="Lxr-4n-Zfc" id="j5Z-id-mGF"/>
                         <outlet property="weatherImageView" destination="dBj-dc-teg" id="Sst-oU-YmB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <barButtonItem style="plain" systemItem="refresh" id="ayK-nt-KZY">
+                    <connections>
+                        <action selector="reloadButtonDidPush:" destination="BYZ-38-t0r" id="wyJ-mp-gTB"/>
+                    </connections>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="894" y="116"/>
+            <point key="canvasLocation" x="1930" y="116"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="B7M-FT-WHN">
+        <!--Navigation Controller-->
+        <scene sceneID="WYj-ey-CUx">
             <objects>
-                <viewController id="I5H-A8-Xkh" customClass="RootViewController" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kyE-bg-GL3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="7LM-Vn-6Qq"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RZ2-MO-KtD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="WeatherNavigationController" id="qBD-7h-mjk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="IIt-MT-LpD">
+                        <rect key="frame" x="0.0" y="96" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Yb8-EG-6c3" kind="relationship" relationship="rootViewController" id="2qW-NX-2i8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZz-mK-ghZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-757" y="116"/>
+            <point key="canvasLocation" x="-22" y="116"/>
         </scene>
         <!--Weather Table View Controller-->
         <scene sceneID="n7q-2t-dvd">
@@ -137,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1CX-h5-iWL">
-                                <rect key="frame" x="0.0" y="96" width="414" height="732"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="636"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WeatherTableViewCell" rowHeight="65" id="WZh-ZR-IKg" customClass="WeatherTableViewCell" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target">
@@ -193,6 +172,7 @@
                                             <outlet property="maximumTemperatureLabel" destination="8yp-Hm-cT6" id="1J7-ge-ksY"/>
                                             <outlet property="minimumTemperatureLabel" destination="NMV-vs-Rff" id="CE7-NV-u1d"/>
                                             <outlet property="weatherImageView" destination="AQF-O3-6Za" id="sTY-AE-mdf"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="wvr-0V-Pr5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -216,6 +196,7 @@
                             <constraint firstItem="ImP-cX-0Vu" firstAttribute="centerY" secondItem="lDc-wd-Doq" secondAttribute="centerY" id="aB7-sP-pj5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="AcX-Tz-tIp"/>
                     <connections>
                         <outlet property="dataSource" destination="au9-cE-udR" id="i9h-DY-sLE"/>
                         <outlet property="tableView" destination="1CX-h5-iWL" id="8JN-By-lUA"/>
@@ -225,7 +206,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXk-bT-p6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="au9-cE-udR" customClass="WeatherTableViewDataSource" customModule="YumemiTraining_WeatherForcast" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="60.869565217391312" y="115.84821428571428"/>
+            <point key="canvasLocation" x="952" y="116"/>
         </scene>
     </scenes>
     <resources>

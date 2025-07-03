@@ -11,12 +11,11 @@ import YumemiWeather
 @objcMembers
 class WeatherViewController: UIViewController {
 
-    @IBOutlet private var areaLabel: UILabel!
     @IBOutlet private var weatherImageView: UIImageView!
     @IBOutlet private var maximumTemperatureLabel: UILabel!
     @IBOutlet private var minimumTemperatureLabel: UILabel!
     
-    @IBOutlet private var reloadButton: UIButton!
+    @IBOutlet private var reloadButton: UIBarButtonItem!
 
     @IBOutlet private var weatherFetchingActivityIndicator: UIActivityIndicatorView!
     
@@ -71,7 +70,9 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reloadButton.isEnabled = hasWeatherModel
+        if hasWeatherModel {
+            navigationItem.setRightBarButton(reloadButton, animated: false)
+        }
         clearLabels()
     }
     
@@ -118,7 +119,6 @@ extension WeatherViewController {
     
     /// Reset the labels for temperature.
     func clearLabels() {
-        areaLabel.text = "--"
         minimumTemperatureLabel.text = "--"
         maximumTemperatureLabel.text = "--"
     }
@@ -126,7 +126,6 @@ extension WeatherViewController {
     /// Apply `weather` data to view.
     /// - Parameter weather: A weather data applying to view.
     func applyToView(weather: Weather, in area: Area) {
-        areaLabel.text = "\(area)"
         weatherImageView.image = weather.condition.imageWithTintColor
         minimumTemperatureLabel.text = String(weather.minimumTemperature)
         maximumTemperatureLabel.text = String(weather.maximumTemperature)
